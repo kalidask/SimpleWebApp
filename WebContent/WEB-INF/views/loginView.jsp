@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
    <head>
@@ -7,6 +8,24 @@
       <title>Login</title>
       <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
    </head>
+   <jsp:useBean id="controller" class="org.o7planning.tutorial.keycloak.Controller" scope="request"/>
+   
+   <%
+        String user_id = "";
+
+
+        String authId = " " ;
+
+                user_id = request.getUserPrincipal().getName();
+                System.out.println("userid is:----------"+user_id);
+            try {
+                authId = user_id ;
+            } catch (Exception ee) {
+                authId = "No user";
+            }
+            
+            
+            %>
    <body>
       <jsp:include page="_header.jsp"></jsp:include>
       <jsp:include page="_menu.jsp"></jsp:include>
@@ -16,6 +35,19 @@
  
  
       <form method="POST" action="${pageContext.request.contextPath}/login">
+      <%
+      if (authId == user_id) {
+      %>
+      
+      <input type="hidden" name="userName" value= "<%=authId%>" />
+      <input type="hidden" name="password" value= "${user.password}" />
+      <input type="hidden" name="rememberMe" value= "Y" />
+      
+      
+      <%
+      } else {
+      %>
+      
          <table border="0">
             <tr>
                <td>User Name</td>
@@ -34,6 +66,9 @@
           data-sitekey="6LdKbHwUAAAAAJEsfpVc6houLaTKsl5fPCX26dMN"></div>
                   <input type="submit" value= "Submit" />
                   <a href="${pageContext.request.contextPath}/">Cancel</a>
+                  <%
+      }         
+                  %>
          
       </form>
  
