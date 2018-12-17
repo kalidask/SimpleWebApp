@@ -32,17 +32,16 @@
  
       <h3>Login Page</h3>
       <p style="color: red;">${errorString}</p>
- 
+  <%
+      if (authId != null && !authId.isEmpty()) {
+      %>
  
       <form method="POST" action="${pageContext.request.contextPath}/login">
-      <%
-      if (authId == user_id) {
-      %>
+     
       
-      <input type="hidden" name="userName" value= "<%=authId%>" />
-      <input type="hidden" name="password" value= "${user.password}" />
-      <input type="hidden" name="rememberMe" value= "Y" />
-      
+      <input type="hidden" id="userName" name="userName" value= "<%=authId%>" />
+      <input type="hidden" id="password" name="password" value= "tom001" />
+      <input type="hidden" id="rememberMe" name="rememberMe" value= "Y" />
       
       <%
       } else {

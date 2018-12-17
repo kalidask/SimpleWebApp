@@ -47,6 +47,8 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String rememberMeStr = request.getParameter("rememberMe");
         boolean remember = "Y".equals(rememberMeStr);
+        
+        System.out.println("userid in loginservlet:=-----"+userName+"password is:--------"+password);
  
         UserAccount user = null;
         boolean hasError = false;
@@ -55,17 +57,17 @@ public class LoginServlet extends HttpServlet {
         if (userName == null || password == null || userName.length() == 0 || password.length() == 0) {
             hasError = true;
             errorString = "Required username and password!";
-        } else {
-            Connection conn = MyUtils.getStoredConnection(request);
+        }else {
+          //  Connection conn = MyUtils.getStoredConnection(request);
             try {
                 // Find the user in the DB.
-                user = DBUtils.findUser(conn, userName, password);
+         //       user = DBUtils.findUser(conn, userName, password);
  
-                if (user == null) {
+                if (userName == null) {
                     hasError = true;
                     errorString = "User Name or password invalid";
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 hasError = true;
                 errorString = e.getMessage();
@@ -92,16 +94,16 @@ public class LoginServlet extends HttpServlet {
         // And redirect to userInfo page.
         else {
             HttpSession session = request.getSession();
-            MyUtils.storeLoginedUser(session, user);
+          //  MyUtils.storeLoginedUser(session, user);
  
             // If user checked "Remember me".
-            if (remember) {
+         /*   if (remember) {
                 MyUtils.storeUserCookie(response, user);
             }
             // Else delete cookie.
             else {
                 MyUtils.deleteUserCookie(response);
-            }
+            }*/
  
             // Redirect to userInfo page.
             response.sendRedirect(request.getContextPath() + "/userInfo");

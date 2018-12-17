@@ -27,16 +27,18 @@ public class UserInfoServlet extends HttpServlet {
         HttpSession session = request.getSession();
  
         // Check User has logged on
-        UserAccount loginedUser = MyUtils.getLoginedUser(session);
+      //  UserAccount loginedUser = MyUtils.getLoginedUser(session);
  
+        
+      //  System.out.println("loggedinuser in userinfo:-------"+loginedUser);
         // Not logged in
-        if (loginedUser == null) {
+        if (session == null) {
             // Redirect to login page.
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
         // Store info to the request attribute before forwarding.
-        request.setAttribute("user", loginedUser);
+   //     request.setAttribute("user", loginedUser);
  
         // If the user has logged in, then forward to the page
         // /WEB-INF/views/userInfoView.jsp
