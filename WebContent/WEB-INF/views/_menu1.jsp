@@ -5,10 +5,8 @@
  
    <a href="${pageContext.request.contextPath}/">Home</a>
    |
-   <a href="${pageContext.request.contextPath}/productList">Product List</a>
-   |
    <a href="${pageContext.request.contextPath}/userInfo">My Account Info</a>
    |
-   <a href="${pageContext.request.contextPath}/logout">LogOut</a>
+   <a href="${pageContext.request.contextPath}/index.jsp?logout=true">LogOut</a>
     
 </div> 
