@@ -10,15 +10,15 @@
 <c:set var="showToken" value="<%=controller.showToken(request)%>"/>
 
 
-<div style="background: #E0E0E0; height: 55px; padding: 5px;">
-  <div style="float: left; padding: 15px; text-align: left;">
-     <b>My Site</b>
+<div style="background: #fff; height: 55px; padding: 5px; " >
+  <div style="float: left; padding: 15px; text-align: left;" >
+     <b>My WebApp</b>
   </div>
  
   <div style="float: right; padding: 10px; text-align: right;">
  
      <!-- User store in session with attribute: loginedUser -->
-     Hello <b>${idToken.preferredUsername}</b>
+     Hello <b>${idToken.preferredUsername}!</b>
    <br/>
     
  

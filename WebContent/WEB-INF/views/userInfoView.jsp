@@ -2,6 +2,9 @@
  pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+ 
+ 
     <jsp:useBean id="controller" class="org.o7planning.tutorial.keycloak.Controller" scope="request"/>
     
     <c:set var="idToken" value="<%=controller.getIDToken(request)%>"/>
@@ -19,11 +22,32 @@
  
     <jsp:include page="_header.jsp"></jsp:include>
     <jsp:include page="_menu1.jsp"></jsp:include>
+ <br/>
+ <br/>
+ <br/>
  
-    <h3>Hello: ${idToken.preferredUsername}</h3>
+ <div class="content">
+            <div id="profile-content" class="message">
  
+    First Name: <b>${idToken.givenName}</b>
+    <br/>
+    Last Name: <b>${idToken.familyName}</b>
+    <br/>    
     User Name: <b>${idToken.preferredUsername}</b>
     <br />
+     Email Address: <b>${idToken.email}</b>
+     <br/>
+     
+     
+     </div>
+     </div>
+     
+      <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
  
     <jsp:include page="_footer.jsp"></jsp:include>
  

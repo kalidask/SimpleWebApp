@@ -11,6 +11,8 @@
       <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
    </head>
    <jsp:useBean id="controller" class="org.o7planning.tutorial.keycloak.Controller" scope="request"/>
+       <c:set var="idToken" value="<%=controller.getIDToken(request)%>"/>
+   
    
    <%
         String user_id = "";
@@ -31,9 +33,9 @@
    <body>
     
       <jsp:include page="_header.jsp"></jsp:include>
-      <jsp:include page="_menu.jsp"></jsp:include>
+    
  
-      <h3>Login Page</h3>
+      
 <!--      <p style="color: red;">${errorString}</p> -->
  
  
@@ -49,7 +51,8 @@
       <%
       } else {
       %>
-      
+      <h3>Login Page</h3>
+        <jsp:include page="_menu.jsp"></jsp:include>
          <table border="0">
             <tr>
                <td>User Name</td>
@@ -71,15 +74,33 @@
       }         
                   %>
                
-    <div class="menu">
-                  <button name="submit" type="submit">Continue to Proceed</button>
-                  <button name="submit1" onclick="location.href = '${pageContext.request.contextPath}/'">cancel</button>
+    <br/>
+    <br/>
+    
+                 <div class="content">
+                 
+                 Hello <b>${idToken.preferredUsername}!</b>
+                </div>     
+    <div class="menu">             
+                           <button name="submit" type="submit" >Continue to Proceed</button>
+                 
                   
                   </div>
           
          
       </form>
  
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
  
       <jsp:include page="_footer.jsp"></jsp:include>
       
